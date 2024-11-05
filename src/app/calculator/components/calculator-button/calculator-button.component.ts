@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostBinding, input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, input, OnInit, output, signal, viewChild } from '@angular/core';
 
 @Component({
   selector: 'calculator-button',
@@ -11,12 +11,18 @@ import { ChangeDetectionStrategy, Component, HostBinding, input, OnInit } from '
   styleUrl: './calculator-button.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host:{
-    class: 'w-1/4 border-r border-b border-indigo-400',
+    class: 'border-r border-b border-indigo-400',
+    '[class.w-2/4]':'isDoubleSize()',
+    '[class.w-1/4]':'!isDoubleSize()', 
     // attribute: 'myAttribute',
     // 'data-size': 'XL'
   }
 })
 export class CalculatorButtonComponent implements OnInit {
+
+  public onClick = output<string>();
+  public contentValue = viewChild<ElementRef<HTMLButtonElement>>('myButton'); // viewChild basado en Señales
+  public isPressed = signal<boolean>(false);
   
   // InputSignal -> Son las entradas de HostComponent basadas en señas
   public isCommand = input( false, {
@@ -32,12 +38,39 @@ export class CalculatorButtonComponent implements OnInit {
   //   return this.isCommand();
   // }
 
-  @HostBinding('class.w-2/4') get commandStyle(){
-    return this.isDoubleSize();
-  }
+  // @HostBinding('class.w-2/4') get commandStyle(){
+  //   return this.isDoubleSize();
+  // }
 
   ngOnInit(): void {
     
+  }
+
+  handleClick(){
+    
+    const value = this.contentValue()!.nativeElement.innerText;
+    if(!value){
+      return
+    }
+    
+    this.onClick.emit(value.trim());
+  }
+
+  keyboardPressedStyle(key: string){
+
+    if(!this.contentValue()){
+      return;
+    } 
+
+    const value = this.contentValue()!.nativeElement.innerText;
+
+    if(value !== key) return;
+
+    this.isPressed.set(true);
+
+    setTimeout(() => {
+      this.isPressed.set(false);
+    }, 100);
   }
 
 }
