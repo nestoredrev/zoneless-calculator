@@ -1,27 +1,12 @@
 # ZonelessCalculator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+Es un ejercicio practico que consiste en probar y practicar las nuevas mejoras de Angular 16+:
 
-## Development server
+1. El enfoque zoneless se recomienda a partir de Angular 16. En esta versión, Angular introdujo mejoras significativas para trabajar sin zones, lo cual ofrece beneficios en el rendimiento y permite una mejor integración con arquitecturas de detección de cambios más modernas, como las basadas en reactividad.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+2. HostComponent: Añadir propiedades a los componentes como en las etiquetas HTML.
 
-## Code scaffolding
+3. InputSignal: utilizar las señales para la comunicacion entre componentes entre padre e hijo.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. HostBinding: Accede a los atributos del Host Component que se podran modificar.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
