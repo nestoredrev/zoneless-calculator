@@ -9,6 +9,10 @@ export const routes: Routes = [
         loadComponent: () => import('./calculator/views/calculator-view/calculator-view.component')
     },
     {
+        path: 'dummy',
+        loadComponent: () => import('./dummy/dummy.component')
+    },
+    {
         path: '**', // ruta no existente, redirigira a calculator
         redirectTo: 'calculator'
     }
