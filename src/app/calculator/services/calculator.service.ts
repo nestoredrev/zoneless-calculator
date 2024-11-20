@@ -107,12 +107,12 @@ export class CalculatorService {
     // Validacion Numeros
     if( numbers.includes(value) ){
 
-      if( this.resultText()=== '0' ){
+      if( this.resultText() === '0' ){
         this.resultText.set(value);
         return;
       }
 
-      if( this.resultText()=== '-0' ){
+      if( this.resultText() === '-0' ){
         this.resultText.set('-'+value);
         return;
       }
@@ -150,9 +150,6 @@ export class CalculatorService {
       case '%':
         result = ( number1 / 100) * number2;  
       break;
-    
-      default:
-        break;
     }
 
     this.resultText.set( result.toString() );
