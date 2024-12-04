@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, input, OnInit, output, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, input, OnInit, output, signal, viewChild } from '@angular/core';
 
 @Component({
   selector: 'calculator-button',
@@ -47,7 +47,7 @@ export class CalculatorButtonComponent implements OnInit {
   }
 
   handleClick(){
-    
+
     const value = this.contentValue()!.nativeElement.innerText;
     if(!value){
       return
